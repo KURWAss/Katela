@@ -1,34 +1,92 @@
-# Katela OS
+# Katela
 
 ![Logo](github/logo.png)
 
-![Static Badge](https://img.shields.io/badge/Author-lilsweep-blue)
-![Static Badge](https://img.shields.io/badge/Date-04%2F26%2F2026-green)
+**Katela** is a real, standalone operating system written from scratch in C and x86 Assembly. Development began on **April 26, 2026**.
 
-> [!IMPORTANT]
-**Katela is not a so-called 'toy OS'.** <br><br>
-**You can call this project a hobby, entertainment, or even a real OS.**<br>
-**But Katela, with every commit, proves that it is not a toy and not a project that will shut down at the first sign of trouble — I guarantee that.**
+Katela is **not** a hobby OS, **not** a toy OS, and it is **not** built as a learning exercise that stops at "hello world" in protected mode. It is engineered as a genuine operating system project: its own bootloader integration, its own kernel, its own shell, and its own filesystem, all built with the intention of being a real, usable OS — not a proof of concept and not a weekend experiment.
 
-Katela is an operating system written from scratch. It currently provides basic filesystem and more. The project is focused on building a clear and understandable system from the ground up, with plans to gradually expand its capabilities over time. I will be glad if you give feedback or make 'distributions'. I will always be happy to see your creativity and skill
+Katela does **not** follow UNIX or POSIX conventions. It does not aim for POSIX compliance, UNIX-like semantics, or compatibility with existing UNIX tooling. Katela follows its own design philosophy, its own system call conventions, its own shell behavior, and its own way of doing things from the ground up.
 
-> **Tip:** Check Github wiki to see more information!
+## Features
 
-Initially, Katela was nothing more than a learning project, but now its scale is growing at an incredibly fast pace. Join the Katelians community. More information about pull requests can be found in CONTRIBUTING.md. Also, write your ideas, problems, and the like in discussions or in issues
+- **Custom kernel** — written in C and Assembly, no third-party kernel code
+- **Custom shell** — Katela's own command-line interface, not a UNIX shell clone
+- **Custom filesystem** — a simple, purpose-built filesystem designed specifically for Katela
+- **VGA driver** — text/graphics output handled natively
+- **Keyboard driver** — native PS/2 keyboard input handling
+- **PC speaker driver** — native sound output through the PC speaker
+- **Non-UNIX, non-POSIX design** — Katela charts its own architectural path
 
-Cancelled - Nope (In the next file update, the slot will be deleted)
+## Philosophy
 
-Freezed - Maybe
+Katela exists to explore what an operating system can look like when it isn't bound by UNIX/POSIX conventions or built purely as a hobby exercise. Every subsystem — from the shell to the filesystem to the drivers — is designed intentionally as part of a cohesive, independent OS, not assembled as disconnected experiments.
 
-Planned - When have free time
+## Requirements
 
-Coming soon - Yes
+To build and run Katela you need a cross-platform toolchain consisting of an assembler (NASM), a GCC-based cross/multilib compiler, GRUB tools for producing a bootable ISO, `xorriso` for ISO creation, and QEMU for emulation/testing.
 
-Working on - YEEES
+### Debian / Ubuntu
 
-|Roadmap|Status|
-|--------|-------|
-|More GRUB Settings|Freezed|
-|Website|Coming soon|
+```bash
+sudo apt install build-essential nasm grub-pc-bin xorriso qemu-system-x86 make gcc-multilib
+```
 
-Please do not claim derivative works as "from scratch" if they are based on this project.
+### Arch Linux
+
+```bash
+sudo pacman -S base-devel nasm grub xorriso qemu-full make gcc
+```
+
+> Note: on Arch, 32-bit multilib support requires enabling the `multilib` repository in `/etc/pacman.conf` first (uncomment the `[multilib]` section), then running `sudo pacman -Syu`.
+
+### macOS
+
+Install [Homebrew](https://brew.sh) first, then:
+
+```bash
+brew install nasm xorriso qemu make
+brew install x86_64-elf-gcc x86_64-elf-binutils
+```
+
+> Note: macOS does not ship a native `grub-pc-bin` package. You'll need a cross-compiled GRUB toolchain (e.g. via `brew install i686-elf-grub` from a suitable tap, or by building GRUB from source) to produce a bootable ISO.
+
+### Windows
+
+The recommended approach is to use **WSL2** (Windows Subsystem for Linux) with a Debian or Ubuntu distribution, then follow the Debian/Ubuntu instructions above:
+
+```powershell
+wsl --install -d Ubuntu
+```
+
+Once inside WSL:
+
+```bash
+sudo apt install build-essential nasm grub-pc-bin xorriso qemu-system-x86 make gcc-multilib
+```
+
+Alternatively, native Windows builds are possible via **MSYS2**, installing equivalent packages (`nasm`, `mingw-w64-x86_64-toolchain`, `qemu`, `xorriso`, and a GRUB toolchain), though WSL2 is the more reliable path.
+
+## Building
+
+Build Katela:
+
+```bash
+make
+```
+
+Build and run Katela in QEMU:
+
+```bash
+make run
+```
+
+Clean all build artifacts:
+
+```bash
+make clean
+```
+
+## License
+
+Katela is under MIT License, see more information in LICENSE file
