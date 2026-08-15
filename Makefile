@@ -6,10 +6,10 @@ all: iso
 $(BUILD)/kernel.bin:
 	mkdir -p $(BUILD)
 	nasm -f elf32 src/boot/boot.asm -o $(BUILD)/boot.o
-	gcc -m32 -ffreestanding -Iinclude -nostdlib -c src/kernel/kernel.c -o $(BUILD)/kernel.o
-	gcc -m32 -ffreestanding -Iinclude -nostdlib -c src/drivers/vga.c -o $(BUILD)/vga.o
-	gcc -m32 -ffreestanding -Iinclude -nostdlib -c src/drivers/keyboard.c -o $(BUILD)/keyboard.o
-	gcc -m32 -ffreestanding -Iinclude -nostdlib -c src/drivers/speaker.c -o $(BUILD)/speaker.o
+	gcc -m32 -ffreestanding -Iinclude -nostdlib -fno-stack-protector -c src/kernel/kernel.c -o $(BUILD)/kernel.o
+	gcc -m32 -ffreestanding -Iinclude -nostdlib -fno-stack-protector -c src/drivers/vga.c -o $(BUILD)/vga.o
+	gcc -m32 -ffreestanding -Iinclude -nostdlib -fno-stack-protector -c src/drivers/keyboard.c -o $(BUILD)/keyboard.o
+	gcc -m32 -ffreestanding -Iinclude -nostdlib -fno-stack-protector -c src/drivers/speaker.c -o $(BUILD)/speaker.o
 	ld -m elf_i386 -T linker.ld -o $(BUILD)/kernel.bin -nostdlib \
 	$(BUILD)/boot.o $(BUILD)/kernel.o $(BUILD)/vga.o $(BUILD)/speaker.o $(BUILD)/keyboard.o
 
