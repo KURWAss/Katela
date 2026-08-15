@@ -147,7 +147,9 @@ void kernel_main() {
 		print("get {name} - read file\n");
 		print("hi - hello ^_^\n");
 		print("beep - plays a sound\n");
+        print("rename {old} {new} - renames file\n");
 		print("rm {name} - removes file");
+
 	    } else if (strcmp(command, "rm") == 0) {
 		
 		if (args[0] == '\0') {
@@ -180,6 +182,49 @@ void kernel_main() {
         	    file_count++;
         	    print("file created\n");
 		}
+        } else if (strcmp(command, "rename") == 0) {
+
+            char old_name[32];
+            char new_name[32];
+
+            int i = 0;
+
+            while (args[i] != ' ' && args[i] != '\0' && i < 31) {
+                old_name[i] = args[i];
+                i++;
+            }
+            old_name[i] = '\0';
+
+            if (args[i] == '\0') {
+                print("standart: new filename required\n");
+                continue;
+            }
+
+            args += i + 1;
+
+            i = 0;
+
+            while (args[i] != ' ' && args[i] != '\0' && i < 31) {
+                new_name[i] = args[i];
+                i++;
+            }
+            new_name[i] = '\0';
+
+            int idx = find_file(old_name);
+
+            if (idx == -1) {
+                print("standart: file not found\n");
+                continue;
+            }
+
+            if (find_file(new_name) != -1) {
+                print("standart: file already exists\n");
+                continue;
+            }
+
+            strcpy(files[idx].name, new_name);
+
+            print("standart: file renamed\n");
 	    } else if (strcmp(command, "see") == 0) {
 
     		if (file_count == 0) {
