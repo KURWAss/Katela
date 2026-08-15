@@ -3,6 +3,7 @@
 #include "../drivers/speaker.h"
 #include "../../include/standart.h"
 #include "../../include/fs.h"
+#include "../../include/panic.h"
 
 // swiss function
 void swiss() {
