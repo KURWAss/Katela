@@ -24,7 +24,7 @@ void swiss() {
         }
     }
 
-    clear()
+    clear();
 }
 
 void kernel_main() {
