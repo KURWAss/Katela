@@ -35,7 +35,7 @@ sudo apt install build-essential nasm grub-pc-bin xorriso qemu-system-x86 make g
 ### Arch Linux
 
 ```bash
-sudo pacman -S base-devel nasm grub xorriso qemu-full make gcc
+sudo pacman -S base-devel nasm grub xorriso qemu-full make gcc mtools
 ```
 
 > Note: on Arch, 32-bit multilib support requires enabling the `multilib` repository in `/etc/pacman.conf` first (uncomment the `[multilib]` section), then running `sudo pacman -Syu`.
