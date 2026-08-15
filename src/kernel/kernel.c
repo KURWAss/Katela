@@ -23,6 +23,8 @@ void swiss() {
             print(str);
         }
     }
+
+    clear()
 }
 
 void kernel_main() {
