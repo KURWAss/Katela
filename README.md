@@ -89,4 +89,4 @@ make clean
 
 ## License
 
-Katela is under MIT License, see more information in LICENSE file
+Katela is under GPL v3.0 License, see more information in LICENSE file
