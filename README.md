@@ -1,16 +1,14 @@
 # Katela
 
-![Logo](github/logo.png)
+**Katela** is a real, standalone kernel written from scratch in C and x86 Assembly. Development began on **April 26, 2026**.
 
-**Katela** is a real, standalone operating system written from scratch in C and x86 Assembly. Development began on **April 26, 2026**.
-
-Katela is **not** a hobby OS, **not** a toy OS, and it is **not** built as a learning exercise that stops at "hello world" in protected mode. It is engineered as a genuine operating system project: its own bootloader integration, its own kernel, its own shell, and its own filesystem, all built with the intention of being a real, usable OS — not a proof of concept and not a weekend experiment.
+Katela is **not** a hobby os, **not** a toy os, **not** even an operating system, and it is **not** built as a learning exercise that stops at "hello world" in protected mode. It is engineered as a genuine kernel project: its own bootloader integration, its own core, its own shell, and its own filesystem, all built with the intention of being a real, usable kernel — not a proof of concept and not a weekend experiment.
 
 Katela does **not** follow UNIX or POSIX conventions. It does not aim for POSIX compliance, UNIX-like semantics, or compatibility with existing UNIX tooling. Katela follows its own design philosophy, its own system call conventions, its own shell behavior, and its own way of doing things from the ground up.
 
 ## Features
 
-- **Custom kernel** — written in C and Assembly, no third-party kernel code
+- **Custom kernel core** — written in C and Assembly, no third-party kernel code
 - **Custom shell** — Katela's own command-line interface, not a UNIX shell clone
 - **Custom filesystem** — a simple, purpose-built filesystem designed specifically for Katela
 - **VGA driver** — text/graphics output handled natively
@@ -20,7 +18,7 @@ Katela does **not** follow UNIX or POSIX conventions. It does not aim for POSIX 
 
 ## Philosophy
 
-Katela exists to explore what an operating system can look like when it isn't bound by UNIX/POSIX conventions or built purely as a hobby exercise. Every subsystem — from the shell to the filesystem to the drivers — is designed intentionally as part of a cohesive, independent OS, not assembled as disconnected experiments.
+Katela exists to explore what a kernel can look like when it isn't bound by UNIX/POSIX conventions or built purely as a hobby exercise. Every subsystem — from the shell to the filesystem to the drivers — is designed intentionally as part of a cohesive, independent kernel, not assembled as disconnected experiments.
 
 ## Requirements
 

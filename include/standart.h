@@ -1,8 +1,8 @@
 #ifndef STANDART_H
 #define STANDART_H
 
-#define DISTRO  "Katela"
-#define VERSION "1.2"
-#define AUTHORS "lilsweep"
+#define DISTRO  "Katela Kernel"
+#define VERSION "1.3"
+#define AUTHORS "KURWA"
 
 #endif
