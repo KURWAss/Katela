@@ -8,13 +8,14 @@ $(BUILD)/kernel.bin:
 	nasm -f elf32 src/boot/boot.asm -o $(BUILD)/boot.o
 	gcc -m32 -ffreestanding -Iinclude -nostdlib -fno-stack-protector -c src/kernel/kernel.c -o $(BUILD)/kernel.o
 	gcc -m32 -ffreestanding -Iinclude -nostdlib -fno-stack-protector -c src/kernel/fs.c -o $(BUILD)/fs.o
+	gcc -m32 -ffreestanding -Iinclude -nostdlib -fno-stack-protector -c src/kernel/mm.c -o $(BUILD)/mm.o
 	gcc -m32 -ffreestanding -Iinclude -nostdlib -fno-stack-protector -c src/kernel/panic.c -o $(BUILD)/panic.o
 	gcc -m32 -ffreestanding -Iinclude -nostdlib -fno-stack-protector -c src/drivers/vga.c -o $(BUILD)/vga.o
 	gcc -m32 -ffreestanding -Iinclude -nostdlib -fno-stack-protector -c src/drivers/keyboard.c -o $(BUILD)/keyboard.o
 	gcc -m32 -ffreestanding -Iinclude -nostdlib -fno-stack-protector -c src/drivers/speaker.c -o $(BUILD)/speaker.o
 	ld -m elf_i386 -T linker.ld -o $(BUILD)/kernel.bin -nostdlib \
-	$(BUILD)/boot.o $(BUILD)/kernel.o $(BUILD)/fs.o $(BUILD)/panic.o \
-	$(BUILD)/vga.o $(BUILD)/speaker.o $(BUILD)/keyboard.o
+	$(BUILD)/boot.o $(BUILD)/kernel.o $(BUILD)/fs.o $(BUILD)/mm.o \
+	$(BUILD)/panic.o $(BUILD)/vga.o $(BUILD)/speaker.o $(BUILD)/keyboard.o
 
 iso: $(BUILD)/kernel.bin
 	mkdir -p $(ISO)/boot
