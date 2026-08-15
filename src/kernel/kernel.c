@@ -2,45 +2,7 @@
 #include "../drivers/keyboard.h"
 #include "../drivers/speaker.h"
 #include "../../include/standart.h"
-
-// file system
-#define MAX_FILES 16
-#define FILE_DATA_SIZE 128
-
-struct file {
-    char name[32];
-    char data[FILE_DATA_SIZE];
-};
-
-struct file files[MAX_FILES];
-int file_count = 0;
-
-// helper functions
-void strcpy(char *dest, const char *src) {
-    int i = 0;
-    while (src[i] != '\0') {
-        dest[i] = src[i];
-        i++;
-    }
-    dest[i] = '\0';
-}
-
-int strcmp(const char *a, const char *b) {
-    while (*a && (*a == *b)) {
-        a++;
-        b++;
-    }
-    return *(unsigned char*)a - *(unsigned char*)b;
-}
-
-int find_file(const char* name) {
-    for (int i = 0; i < file_count; i++) {
-        if (strcmp(files[i].name, name) == 0) {
-            return i;
-        }
-    }
-    return -1;
-}
+#include "../../include/fs.h"
 
 // swiss function
 void swiss() {
