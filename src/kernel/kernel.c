@@ -31,12 +31,7 @@ void swiss() {
 
 // main function
 void kernel_main() {
-    init_speaker();
-    clear();
-
-    print("Welcome to ");
-    print(DISTRO);
-    print("!\nWrite help for cmd list! ");
+    init();
     print("\n\n> ");
 
     char buffer[64];

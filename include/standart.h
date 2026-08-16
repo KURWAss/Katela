@@ -4,4 +4,6 @@
 #define DISTRO  "Katela Kernel"
 #define VERSION "1.3"
 
+void init();
+
 #endif
