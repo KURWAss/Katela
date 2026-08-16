@@ -10,3 +10,6 @@ build/
 *.tar
 *.gz
 *.xz
+*.zip
+*.rar
+*.7z
