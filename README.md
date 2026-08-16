@@ -2,7 +2,7 @@
 
 **Katela** is a real, standalone kernel written from scratch in C and x86 Assembly. Development began on **April 26, 2026**.
 
-Katela is **not** a hobby os, **not** a toy os, **not** even an operating system, and it is **not** built as a learning exercise that stops at "hello world" in protected mode. It is engineered as a genuine kernel project: its own bootloader integration, its own core, its own shell, and its own filesystem, all built with the intention of being a real, usable kernel — not a proof of concept and not a weekend experiment.
+Katela is **not** a hobby os, **not** a toy os, **not** even an operating system, and it is **not** built as a learning exercise that stops at "hello world". It is engineered as a genuine kernel project: its own core, its own shell, and its own filesystem, all built with the intention of being a real, usable kernel — not a proof of concept and not a weekend experiment.
 
 Katela does **not** follow UNIX or POSIX conventions. It does not aim for POSIX compliance, UNIX-like semantics, or compatibility with existing UNIX tooling. Katela follows its own design philosophy, its own system call conventions, its own shell behavior, and its own way of doing things from the ground up.
 
@@ -22,7 +22,7 @@ Katela exists to explore what a kernel can look like when it isn't bound by UNIX
 
 ## Requirements
 
-To build and run Katela you need a cross-platform toolchain consisting of an assembler (NASM), a GCC-based cross/multilib compiler, GRUB tools for producing a bootable ISO, `xorriso` for ISO creation, and QEMU for emulation/testing.
+To build and run Katela you need a cross-platform toolchain consisting of an assembler (NASM), a GCC-based cross/multilib compiler, GRUB tools for producing a bootable ISO, `xorriso` for ISO creation, and QEMU for emulation/testing (you also can try another VMs like virtualbox or wmware).
 
 ### Debian / Ubuntu
 
