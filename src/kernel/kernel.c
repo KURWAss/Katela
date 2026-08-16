@@ -29,6 +29,7 @@ void swiss() {
     clear();
 }
 
+// main function
 void kernel_main() {
     init_speaker();
     clear();
@@ -77,16 +78,14 @@ void kernel_main() {
                 print(VERSION);
                 print("\"\n");
 
-                print("Authors: \"");
-                print(AUTHORS);
-                print("\"\n");
-
             } else if (strcmp(command, "echo") == 0) {
 
                 print(args);
                 print("\n");
-	    } else if (strcmp(command, "swiss") == 0) {
-		swiss();
+
+	        } else if (strcmp(command, "swiss") == 0) {
+		        
+                swiss();
 
             } else if (strcmp(command, "off") == 0) {
 
@@ -118,36 +117,40 @@ void kernel_main() {
 
 	    } else if (strcmp(command, "rm") == 0) {
 		
-		if (args[0] == '\0') {
-		    print("standart: filename required\n");
-		} else {
-		    int idx = find_file(args);
-		    if (idx == -1) {
-			print("standart: file not found");
+		    if (args[0] == '\0') {
+                print("standart: filename required\n");
 		    } else {
-			for (int i = idx; i < file_count - 1; i++) {
-			    files[i + 1];
-			}
-			file_count--;
-			print("standart: file deleted");
+
+		        int idx = find_file(args);
+		        if (idx == -1) {
+			        print("standart: file not found");
+		        } else {
+			        for (int i = idx; i < file_count - 1; i++) {
+			            files[i + 1];
+			        }
+			    file_count--;
 		    }
 		}
 
 	    } else if (strcmp(command, "clear") == 0 || strcmp(command, "cls") == 0) {
-		clear();
+		
+            clear();
+
 	    } else if (strcmp(command, "hi") == 0) {
-		print("hi :3\n");
+		
+            print("hi :3\n");
+
 	    } else if (strcmp(command, "create") == 0) {
 
     		if (args[0] == '\0') {
-        	    print("standart: name required\n");
+        	    print("name required\n");
     		} else if (file_count >= MAX_FILES) {
-                    print("standart: file limit reached\n");
+                    print("file limit reached\n");
     	        } else {
         	    strcpy(files[file_count].name, args);
         	    file_count++;
-        	    print("file created\n");
-		}
+		    }
+
         } else if (strcmp(command, "rename") == 0) {
 
             char old_name[32];
@@ -162,7 +165,7 @@ void kernel_main() {
             old_name[i] = '\0';
 
             if (args[i] == '\0') {
-                print("standart: new filename required\n");
+                print("new filename required\n");
                 continue;
             }
 
@@ -179,22 +182,21 @@ void kernel_main() {
             int idx = find_file(old_name);
 
             if (idx == -1) {
-                print("standart: file not found\n");
+                print("file not found\n");
                 continue;
             }
 
             if (find_file(new_name) != -1) {
-                print("standart: file already exists\n");
+                print("file already exists\n");
                 continue;
             }
 
             strcpy(files[idx].name, new_name);
 
-            print("standart: file renamed\n");
 	    } else if (strcmp(command, "see") == 0) {
 
     		if (file_count == 0) {
-        	    print("standart: files cannot be found\n");
+        	    print("files cannot be found\n");
     		} else {
                     for (int i = 0; i < file_count; i++) {
                         print(files[i].name);
@@ -206,7 +208,7 @@ void kernel_main() {
     	        int idx = find_file(args);
 
     		if (idx == -1) {
-        	    print("standart: file not found\n");
+        	    print("file not found\n");
     		} else {
         	    print(files[idx].data);
                     print("\n");
@@ -226,7 +228,7 @@ void kernel_main() {
     		if (data[i] == ' ') {
         	    data += i + 1;
     		} else {
-                    print("standart: missing value\n");
+                    print("missing value\n");
         	    continue;
     		}
 
@@ -234,7 +236,7 @@ void kernel_main() {
 
     		if (idx == -1) {
         	    if (file_count >= MAX_FILES) {
-            	    	print("standart: file limit reached\n");
+            	    	print("file limit reached\n");
             	        continue;
         	    }
 
@@ -249,10 +251,8 @@ void kernel_main() {
     		}
     	        files[idx].data[j] = '\0';
 
-    	        print("standart: file edited\n");
-
             } else {
-                print("standart: command not found\n");
+                print("command not found\n");
             }
 
             index = 0;
