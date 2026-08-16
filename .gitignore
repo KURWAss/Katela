@@ -5,3 +5,8 @@ build/
 # idk
 *.a
 *.o
+
+# archives
+*.tar
+*.gz
+*.xz
