@@ -5,5 +5,6 @@
 #define VERSION "1.3"
 
 void init();
+void help();
 
 #endif
