@@ -82,6 +82,10 @@ void kernel_main() {
 		        
                 swiss();
 
+            } else if (strcmp(command, "panic") == 0) {
+
+                panic("user requested panic");
+
             } else if (strcmp(command, "off") == 0) {
 
                 print("You can safely turn off your PC now.\n");
@@ -108,7 +112,8 @@ void kernel_main() {
 		print("hi - hello ^_^\n");
 		print("beep - plays a sound\n");
         print("rename {old} {new} - renames file\n");
-		print("rm {name} - removes file");
+		print("rm {name} - removes file\n");
+        print("panic - requests system panic");
 
 	    } else if (strcmp(command, "rm") == 0) {
 		
