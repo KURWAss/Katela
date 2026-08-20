@@ -8,5 +8,6 @@ void init();
 void help();
 
 char *cpuinfo(void);
+int strlen(const char *str);
 
 #endif
