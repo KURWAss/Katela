@@ -21,7 +21,6 @@ void help() {
 	print("see - list files\n");
 	print("set {name} {text} - write to file\n");
 	print("get {name} - read file\n");
-	print("hi - hello ^_^\n");
 	print("beep - plays a sound\n");
     print("rename {old} {new} - renames file\n");
 	print("rm {name} - removes file\n");

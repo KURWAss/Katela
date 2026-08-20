@@ -123,10 +123,6 @@ void kernel_main() {
 		
             clear();
 
-	    } else if (strcmp(command, "hi") == 0) {
-		
-            print("hi :3\n");
-
 	    } else if (strcmp(command, "create") == 0) {
 
     		if (args[0] == '\0') {
