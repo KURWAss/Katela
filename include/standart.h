@@ -7,4 +7,6 @@
 void init();
 void help();
 
+char *cpuinfo(void);
+
 #endif

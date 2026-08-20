@@ -27,3 +27,34 @@ void help() {
 	print("rm {name} - removes file\n");
     print("panic - requests system panic");
 }
+
+char *cpuinfo(void)
+{
+    static char vendor[13];
+    unsigned int eax, ebx, ecx, edx;
+
+    asm volatile(
+        "cpuid"
+        : "=a"(eax), "=b"(ebx), "=c"(ecx), "=d"(edx)
+        : "a"(0)
+    );
+
+    vendor[0]  = ebx;
+    vendor[1]  = ebx >> 8;
+    vendor[2]  = ebx >> 16;
+    vendor[3]  = ebx >> 24;
+
+    vendor[4]  = edx;
+    vendor[5]  = edx >> 8;
+    vendor[6]  = edx >> 16;
+    vendor[7]  = edx >> 24;
+
+    vendor[8]  = ecx;
+    vendor[9]  = ecx >> 8;
+    vendor[10] = ecx >> 16;
+    vendor[11] = ecx >> 24;
+
+    vendor[12] = '\0';
+
+    return vendor;
+}
